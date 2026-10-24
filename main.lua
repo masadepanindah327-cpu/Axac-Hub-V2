@@ -833,6 +833,5 @@ LocalPlayer.CharacterAdded:Connect(function(char)
     applyCosmetics()
     if getgenv().AxacState.Fly then toggleFly(true) end
 end)
-     jgjgu
 
 print("AXAC HUB VERMEIL EXCLUSIVE LOADED SUCCESSFULLY!")
