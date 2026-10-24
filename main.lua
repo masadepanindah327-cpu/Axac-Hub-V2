@@ -133,11 +133,9 @@ local function removeAxacAccessory(accName)
     end
 end
 
--- PERBAIKAN UTAMA: Korblox & Cosmetics Handler yang Stabil
 local function applyCosmetics()
     local char = LocalPlayer.Character
     if not char then return end
-    local hum = char:FindFirstChildOfClass("Humanoid")
 
     local head = char:FindFirstChild("Head")
     if head then
@@ -146,7 +144,6 @@ local function applyCosmetics()
         if face then face.Transparency = getgenv().AxacState.Headless and 1 or (getgenv().AxacState.GhostMode and 0.5 or 0) end
     end
 
-    -- Fix Korblox menggunakan manipulasi Mesh/Transparency langsung pada kaki kanan agar tidak error API HumanoidDescription
     local rLower = char:FindFirstChild("RightLowerLeg")
     local rFoot = char:FindFirstChild("RightFoot")
     local rUpper = char:FindFirstChild("RightUpperLeg")
@@ -156,7 +153,7 @@ local function applyCosmetics()
         if rLower then rLower.Transparency = 1 end
         if rUpper then
             local mesh = rUpper:FindFirstChildOfClass("SpecialMesh") or Instance.new("SpecialMesh", rUpper)
-            mesh.MeshId = "rbxassetid://902942093" -- Korblox Right Leg Mesh ID
+            mesh.MeshId = "rbxassetid://902942093"
             mesh.Scale = Vector3.new(1, 1, 1)
         end
     else
@@ -556,7 +553,7 @@ UIListLayout.Padding = UDim.new(0, 8)
 local function createHeaderSection(titleText)
     local sec = Instance.new("TextLabel")
     sec.Size = UDim2.new(1, -10, 0, 22)
-        sec.BackgroundTransparency = 1
+    sec.BackgroundTransparency = 1
     sec.Text = "━━━━ " .. titleText .. " ━━━━"
     sec.TextColor3 = Color3.fromRGB(255, 185, 120)
     sec.Font = Enum.Font.GothamBold
@@ -833,5 +830,4 @@ LocalPlayer.CharacterAdded:Connect(function(char)
     applyCosmetics()
     if getgenv().AxacState.Fly then toggleFly(true) end
 end)
-
 print("AXAC HUB VERMEIL EXCLUSIVE LOADED SUCCESSFULLY!")
